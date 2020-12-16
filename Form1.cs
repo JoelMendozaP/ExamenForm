@@ -21,7 +21,7 @@ namespace ExamenForm
         public Form1()
         {
             InitializeComponent();
-            Guardar("Lago",0, 14, 17, 44, 32, 65);
+            //Guardar("Lago",0, 14, 17, 44, 32, 65);
             Guardar("Lago",0, 17, 17, 47, 35, 68);
             Guardar("Tierra",77, 214, 69, 198, 56, 186);
             Guardar("Vegetacion",21, 91, 48, 109, 40, 80);
@@ -139,11 +139,11 @@ namespace ExamenForm
                                 if (k < b.Width && l < b.Height)
                                     if (k > 0 && l > 0)
                                     {
-                                        bc.SetPixel(k, l, Color.FromArgb(0, 0, 0));
+                                        bc.SetPixel(k, l, Color.FromArgb(r2, g2, b2+20));
                                     }
                             }
                         }
-                        bc.SetPixel(i, j, Color.FromArgb(0, 0, 0));
+                        bc.SetPixel(i, j, Color.FromArgb(r2, g2, b2+20));
                     }
                     else
                     {
@@ -169,6 +169,28 @@ namespace ExamenForm
         private void button2_Click(object sender, EventArgs e)
         {
             Limpiar();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (Imagen == null)
+            {
+                CargarImagen();
+            }
+            else
+            {
+                for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
+                {
+                    int c1 = Int32.Parse((string)dataGridView1.Rows[i].Cells[1].Value);
+                    int c2 = Int32.Parse((string)dataGridView1.Rows[i].Cells[2].Value);
+                    int c3 = Int32.Parse((string)dataGridView1.Rows[i].Cells[3].Value);
+                    int c4 = Int32.Parse((string)dataGridView1.Rows[i].Cells[4].Value);
+                    int c5 = Int32.Parse((string)dataGridView1.Rows[i].Cells[5].Value);
+                    int c6 = Int32.Parse((string)dataGridView1.Rows[i].Cells[6].Value);
+                    Pintar(c1, c2, c3, c4, c5, c6);
+                }
+                //Pintar(c1, c2, c3, c4, c5, c6);
+            }
         }
     }
 }
